@@ -68,6 +68,15 @@ const Recipes = {
     console.log('Retreiving recipes');
     return Object.keys(this.items).map(key => this.items[key]);
   },
+  search:function(query){
+    var matches = [];
+    for (var i = 0; i < this.items.length; i++) {
+      if(this.items[i].name.indexOf(query)>-1){
+        matches.push(this.items[i]);
+      }
+    }
+    return matches;
+  },
   delete: function(itemId) {
     console.log(`Deleting recipe with id \`${itemId}\``);
     delete this.items[itemId];
